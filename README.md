@@ -4,70 +4,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class calculator extends JFrame implements ActionListener {
+# Java GUI Калькулятор
 
-	JTextField textField;
-	double num1 = 0, num2 = 0, result = 0;
-	char operator;
+##  Сипаттамасы
 
-	calculator() {
-		setTitle("Calculator");
-		setSize(300, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new BorderLayout());
+Бұл — Java Swing кітапханасымен жасалған қарапайым графикалық калькулятор.
 
-		textField = new JTextField();
-		textField.setFont(new Font("Arial", Font.BOLD, 20));
-		textField.setEditable(false);
-		add(textField, BorderLayout.NORTH);
+## ⚙️ Негізгі функциялары
 
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5, 4, 5, 5));
+* Қосу (+)
+* Алу (-)
+* Көбейту (*)
+* Бөлу (/)
+* Сандарды енгізу батырмалары
+* Нәтижені тазалау (C)
 
-		String[] buttons = {
-				"7", "8", "9", "/",
-				"4", "5", "6", "*",
-				"1", "2", "3", "-",
-				"0", "C", "=", "+"
-		};
+## Техникалық мәліметтер
+* Тілі: Java
+* Интерфейс: Swing (JFrame, JButton, JTextField)
+* Логика: ActionListener арқылы оқиғаларды өңдеу
 
-		for (String text : buttons) {
-			JButton btn = new JButton(text);
-			btn.setFont(new Font("Arial", Font.BOLD, 16));
-			btn.addActionListener(this);
-			panel.add(btn);
-		}
+##  Қалай іске қосу керек
 
-		add(panel, BorderLayout.CENTER);
-		setVisible(true);
-	}
+1. Проектіні жүктеңіз
+2. `Calculator.java` файлын ашыңыз
+3. Run басыңыз
 
-	public void actionPerformed(ActionEvent e) {
-		String command = e.getActionCommand();
-
-		if (command.charAt(0) >= '0' && command.charAt(0) <= '9') {
-			textField.setText(textField.getText() + command);
-		} else if (command.equals("C")) {
-			textField.setText("");
-		} else if (command.equals("=")) {
-			num2 = Double.parseDouble(textField.getText());
-
-			switch (operator) {
-				case '+': result = num1 + num2; break;
-				case '-': result = num1 - num2; break;
-				case '*': result = num1 * num2; break;
-				case '/': result = num1 / num2; break;
-			}
-
-			textField.setText(String.valueOf(result));
-		} else {
-			num1 = Double.parseDouble(textField.getText());
-			operator = command.charAt(0);
-			textField.setText("");
-		}
-	}
-
-	public static void main(String[] args) {
-		new calculator();
-	}
-}
+## 💡 Қосымша
+Бұл жоба Java GUI үйрену үшін қарапайым мысал болып табылады.
